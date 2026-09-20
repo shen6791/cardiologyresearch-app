@@ -34,8 +34,6 @@ export async function proxy(request: NextRequest) {
     return NextResponse.redirect(url);
   }
 
-  response.headers.set('x-debug-pathname', pathname);
-  response.headers.set('x-debug-is-public', String(isPublicAdminPath));
   return response;
 }
 
