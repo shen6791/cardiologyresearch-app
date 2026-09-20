@@ -25,15 +25,17 @@ export async function proxy(request: NextRequest) {
 
   const { data: { user } } = await supabase.auth.getUser();
 
-  const publicAdminPaths = ['/admin/login', '/admin/signup'];
-  if (request.nextUrl.pathname.startsWith('/admin') && !publicAdminPaths.includes(request.nextUrl.pathname)) {
-    if (!user) {
-      const url = request.nextUrl.clone();
-      url.pathname = '/admin/login';
-      return NextResponse.redirect(url);
-    }
+  const pathname = request.nextUrl.pathname;
+  const isPublicAdminPath = pathname === '/admin/login' || pathname === '/admin/signup';
+
+  if (pathname.startsWith('/admin') && !isPublicAdminPath && !user) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/admin/login';
+    return NextResponse.redirect(url);
   }
 
+  response.headers.set('x-debug-pathname', pathname);
+  response.headers.set('x-debug-is-public', String(isPublicAdminPath));
   return response;
 }
 
