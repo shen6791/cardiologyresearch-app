@@ -27,29 +27,35 @@ export default function SiteHeader({ doctorName }: { doctorName: string }) {
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
 
+  useEffect(() => {
+    if (open) setScrolled(true);
+  }, [open]);
+
   return (
     <div className="sticky top-0 z-40 flex justify-center px-3 pt-4">
       <header
-        className={`w-full max-w-5xl rounded-full border border-[#e9e7e0] transition-[background-color,backdrop-filter,box-shadow] duration-300 ${
-          scrolled ? 'bg-white/85 backdrop-blur-md shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)]' : 'bg-white/50 backdrop-blur-sm'
+        className={`w-full max-w-5xl border border-[#e9e7e0] transition-[background-color,backdrop-filter,box-shadow,border-radius] duration-300 ${
+          open ? 'rounded-3xl' : 'rounded-full'
+        } ${
+          scrolled ? 'bg-white/90 backdrop-blur-md shadow-[0_8px_30px_-12px_rgba(0,0,0,0.12)]' : 'bg-white/50 backdrop-blur-sm'
         }`}
       >
-        <div className="flex items-center justify-between px-3 py-2.5">
-          <Link href="/" className="flex items-center gap-2.5 pl-2">
+        <div className="flex items-center justify-between gap-2 px-3 py-2.5">
+          <Link href="/" className="flex items-center gap-2 pl-1 sm:pl-2 min-w-0 flex-1 lg:flex-none">
             <span className="w-8 h-8 rounded-full bg-[#1d4ed8] text-white flex items-center justify-center font-display text-xs font-extrabold flex-none">CR</span>
-            <span className="font-display font-bold tracking-tight text-sm hidden sm:inline">Ceylon Cardiology Research</span>
+            <span className="font-display font-bold tracking-tight text-[13px] sm:text-sm truncate">Ceylon Cardiology Research</span>
           </Link>
-          <nav className="hidden lg:flex gap-5 text-sm text-[#6b6a63]">
+          <nav className="hidden lg:flex gap-5 text-sm text-[#6b6a63] flex-none">
             {links.map((l) => (
               <Link key={l.href} href={l.href} className={`nav-link hover:text-[#1d4ed8] transition-colors ${pathname === l.href ? 'active text-[#1d4ed8] font-medium' : ''}`}>
                 {l.label}
               </Link>
             ))}
           </nav>
-          <Link href="/contact" className="hidden md:inline-flex btn-lift items-center px-5 py-2 rounded-full border border-[#1a1a17]/15 text-sm font-medium hover:border-[#1d4ed8] transition-colors">
+          <Link href="/contact" className="hidden md:inline-flex btn-lift items-center px-5 py-2 rounded-full border border-[#1a1a17]/15 text-sm font-medium hover:border-[#1d4ed8] transition-colors flex-none">
             Contact
           </Link>
-          <button onClick={() => setOpen((v) => !v)} className="lg:hidden flex flex-col gap-1.5 p-2 mr-1" aria-label="Toggle menu">
+          <button onClick={() => setOpen((v) => !v)} className="lg:hidden flex flex-col gap-1.5 p-2 mr-1 flex-none" aria-label="Toggle menu">
             <span className={`w-5 h-px bg-[#1a1a17] transition-transform duration-200 ${open ? 'translate-y-[3px] rotate-45' : ''}`} />
             <span className={`w-5 h-px bg-[#1a1a17] transition-transform duration-200 ${open ? '-translate-y-[3px] -rotate-45' : ''}`} />
           </button>
