@@ -33,17 +33,27 @@ export default async function Home() {
   return (
     <div>
       {/* HERO */}
-      <section className="max-w-5xl mx-auto px-6 pt-20 pb-16 flex flex-col md:flex-row items-center gap-14">
-        <div className="flex-1 flex flex-col gap-6">
-          <div className="hero-fade-1 text-xs font-semibold tracking-widest uppercase text-[#0f5d52]">Cardiology Research</div>
-          <h1 className="hero-fade-2 font-display text-4xl md:text-5xl font-semibold leading-tight text-[#1c1c1a]">{s.tagline}</h1>
-          <p className="hero-fade-3 text-[#6b6a63] text-lg leading-relaxed max-w-lg">{s.bio_intro}</p>
-          <div className="hero-fade-4 flex gap-4 flex-wrap pt-1">
-            <Link href="/publications" className="btn-lift px-6 py-3 rounded-md bg-[#0f5d52] text-white font-medium text-sm">View Publications</Link>
-            <Link href="/contact" className="btn-lift px-6 py-3 rounded-md border border-[#d8d4c8] text-sm font-medium hover:border-[#0f5d52] transition-colors">Get in Touch</Link>
+      <section className="relative overflow-hidden">
+        <div className="dot-grid pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="relative max-w-5xl mx-auto px-6 pt-20 pb-16 flex flex-col md:flex-row items-center gap-14">
+          <div className="flex-1 flex flex-col gap-6">
+            <div className="hero-fade-1 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#0f5d52]">
+              <span className="accent-line" /> Cardiology Research
+            </div>
+            <h1 className="hero-fade-2 font-display text-4xl md:text-5xl font-semibold leading-tight text-[#1c1c1a]">{s.tagline}</h1>
+            <p className="hero-fade-3 text-[#6b6a63] text-lg leading-relaxed max-w-lg">{s.bio_intro}</p>
+            <div className="hero-fade-4 flex gap-4 flex-wrap pt-1">
+              <Link href="/publications" className="btn-lift group px-6 py-3 rounded-md bg-[#0f5d52] text-white font-medium text-sm">
+                View Publications <span className="arrow-nudge">→</span>
+              </Link>
+              <Link href="/contact" className="btn-lift px-6 py-3 rounded-md border border-[#d8d4c8] text-sm font-medium hover:border-[#0f5d52] transition-colors">Get in Touch</Link>
+            </div>
+          </div>
+          <div className="relative flex-none hero-fade-img">
+            <div className="accent-glow absolute -inset-6 -z-10" aria-hidden="true" />
+            <img src={s.photo_url ?? '/dr-rahuman.png'} alt={s.doctor_name} className="w-56 h-64 sm:w-64 sm:h-72 md:w-72 md:h-80 object-cover rounded-xl border border-[#e6e3db]" />
           </div>
         </div>
-        <img src={s.photo_url ?? '/dr-rahuman.png'} alt={s.doctor_name} className="hero-fade-img w-56 h-64 sm:w-64 sm:h-72 md:w-72 md:h-80 object-cover rounded-xl border border-[#e6e3db] flex-none" />
       </section>
 
       {/* STATS */}
@@ -59,7 +69,9 @@ export default async function Home() {
       {/* ABOUT */}
       <Reveal>
         <section className="max-w-5xl mx-auto px-6 py-20 flex flex-col md:flex-row gap-14">
-          <div className="md:w-48 flex-none text-xs font-semibold tracking-widest uppercase text-[#0f5d52]">About</div>
+          <div className="md:w-48 flex-none flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#0f5d52] h-fit">
+            <span className="accent-line" /> About
+          </div>
           <div className="flex-1 max-w-2xl flex flex-col gap-4 text-[#3d3c37] leading-relaxed">
             <p>{s.bio_body}</p>
             {s.bio_outro && <p>{s.bio_outro}</p>}
@@ -73,7 +85,10 @@ export default async function Home() {
           {sections.map((sec, i) => (
             <Reveal key={sec.href} delay={i * 60}>
               <Link href={sec.href} className="card-lift group border border-[#e6e3db] rounded-lg p-6 hover:border-[#0f5d52] flex flex-col gap-2 h-full">
-                <div className="font-display font-semibold group-hover:text-[#0f5d52] transition-colors">{sec.label}</div>
+                <div className="flex items-center justify-between">
+                  <div className="font-display font-semibold group-hover:text-[#0f5d52] transition-colors">{sec.label}</div>
+                  <span className="arrow-nudge text-[#0f5d52] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                </div>
                 <div className="text-sm text-[#6b6a63]">{sec.desc}</div>
               </Link>
             </Reveal>

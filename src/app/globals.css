@@ -91,6 +91,40 @@ a { text-underline-offset: 3px; }
   box-shadow: 0 12px 28px -16px rgba(28, 28, 26, 0.18);
 }
 
+.dot-grid {
+  background-image: radial-gradient(circle, #d8d4c8 1px, transparent 1px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, black 40%, transparent 80%);
+  mask-image: radial-gradient(ellipse 60% 60% at 50% 40%, black 40%, transparent 80%);
+}
+
+.accent-glow {
+  background: radial-gradient(circle, rgba(15,93,82,0.16), transparent 70%);
+  filter: blur(20px);
+}
+
+.arrow-nudge {
+  display: inline-block;
+  transition: transform 0.2s ease;
+}
+a:hover .arrow-nudge,
+button:hover .arrow-nudge {
+  transform: translateX(3px);
+}
+
+.accent-line {
+  width: 40px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+}
+
+.gradient-text {
+  background: linear-gradient(100deg, #0f5d52, #1c7a6b 60%, #0f5d52);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .reveal, .hero-fade-1, .hero-fade-2, .hero-fade-3, .hero-fade-4, .hero-fade-img, .btn-lift, .card-lift {
     animation: none !important;
