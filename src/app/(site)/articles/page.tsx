@@ -15,12 +15,12 @@ export default async function ArticlesPage() {
       <PageHeader eyebrow="Writing" title="Articles" />
       <div className="max-w-5xl mx-auto px-6 pb-24">
         {articles.length === 0 ? (
-          <div className="border border-dashed border-[#d8d4c8] rounded-lg p-12 text-center text-sm text-[#6b6a63]">No articles published yet. Check back soon.</div>
+          <div className="border border-dashed border-[#d8d4c8] rounded-2xl p-12 text-center text-sm text-[#6b6a63]">No articles published yet. Check back soon.</div>
         ) : (
           <div className="grid md:grid-cols-3 gap-5">
             {articles.map((a, i) => (
               <Reveal key={a.id} delay={i * 60}>
-                <div className="card-lift border border-[#e6e3db] rounded-lg p-5 flex flex-col gap-3 h-full">
+                <div className="card-lift border border-[#e6e3db] rounded-2xl p-5 flex flex-col gap-3 h-full">
                   {a.cover_url && <img src={a.cover_url} alt="" className="rounded-md h-36 w-full object-cover" />}
                   <div className="font-medium">{a.title}</div>
                   {a.body && <p className="text-sm text-[#6b6a63] line-clamp-3">{a.body}</p>}

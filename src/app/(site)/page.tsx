@@ -3,6 +3,7 @@ import { createClient } from '@/lib/supabase/server';
 import type { SiteSettings, Publication, ClinicalTrial, Presentation, Fellowship } from '@/lib/types';
 import Reveal from '@/components/Reveal';
 import AnimatedStat from '@/components/AnimatedStat';
+import HoverGlowCard from '@/components/HoverGlowCard';
 
 export default async function Home() {
   const supabase = await createClient();
@@ -37,16 +38,20 @@ export default async function Home() {
         <div className="dot-grid pointer-events-none absolute inset-0" aria-hidden="true" />
         <div className="relative max-w-5xl mx-auto px-6 pt-20 pb-16 flex flex-col md:flex-row items-center gap-14">
           <div className="flex-1 flex flex-col gap-6">
-            <div className="hero-fade-1 flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#0f5d52]">
-              <span className="accent-line" /> Cardiology Research
+            <div className="hero-fade-1 inline-flex items-center gap-2 self-start px-3 py-1.5 rounded-full border border-[#e9e7e0] bg-white text-xs font-semibold text-[#4a5d23]">
+              <span className="relative flex w-2 h-2">
+                <span className="absolute inline-flex h-full w-full rounded-full bg-[#4a5d23] opacity-60 animate-ping" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#4a5d23]" />
+              </span>
+              Actively Publishing Research
             </div>
-            <h1 className="hero-fade-2 font-display text-4xl md:text-5xl font-semibold leading-tight text-[#1c1c1a]">{s.tagline}</h1>
+            <h1 className="hero-fade-2 font-display text-5xl md:text-6xl font-extrabold leading-[1.05] text-[#1a1a17] tracking-tight">{s.tagline}</h1>
             <p className="hero-fade-3 text-[#6b6a63] text-lg leading-relaxed max-w-lg">{s.bio_intro}</p>
             <div className="hero-fade-4 flex gap-4 flex-wrap pt-1">
-              <Link href="/publications" className="btn-lift group px-6 py-3 rounded-md bg-[#0f5d52] text-white font-medium text-sm">
+              <Link href="/publications" className="btn-lift group px-6 py-3 rounded-full bg-[#4a5d23] text-white font-medium text-sm">
                 View Publications <span className="arrow-nudge">→</span>
               </Link>
-              <Link href="/contact" className="btn-lift px-6 py-3 rounded-md border border-[#d8d4c8] text-sm font-medium hover:border-[#0f5d52] transition-colors">Get in Touch</Link>
+              <Link href="/contact" className="btn-lift px-6 py-3 rounded-full border border-[#1a1a17]/15 text-sm font-medium hover:border-[#4a5d23] transition-colors">Get in Touch</Link>
             </div>
           </div>
           <div className="relative flex-none hero-fade-img">
@@ -69,7 +74,7 @@ export default async function Home() {
       {/* ABOUT */}
       <Reveal>
         <section className="max-w-5xl mx-auto px-6 py-20 flex flex-col md:flex-row gap-14">
-          <div className="md:w-48 flex-none flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#0f5d52] h-fit">
+          <div className="md:w-48 flex-none flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-[#4a5d23] h-fit">
             <span className="accent-line" /> About
           </div>
           <div className="flex-1 max-w-2xl flex flex-col gap-4 text-[#3d3c37] leading-relaxed">
@@ -84,13 +89,15 @@ export default async function Home() {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
           {sections.map((sec, i) => (
             <Reveal key={sec.href} delay={i * 60}>
-              <Link href={sec.href} className="card-lift group border border-[#e6e3db] rounded-lg p-6 hover:border-[#0f5d52] flex flex-col gap-2 h-full">
-                <div className="flex items-center justify-between">
-                  <div className="font-display font-semibold group-hover:text-[#0f5d52] transition-colors">{sec.label}</div>
-                  <span className="arrow-nudge text-[#0f5d52] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
-                </div>
-                <div className="text-sm text-[#6b6a63]">{sec.desc}</div>
-              </Link>
+              <HoverGlowCard className="card-lift group border border-[#e9e7e0] rounded-2xl h-full">
+                <Link href={sec.href} className="block p-6 flex flex-col gap-2 h-full">
+                  <div className="flex items-center justify-between">
+                    <div className="font-display font-bold group-hover:text-[#4a5d23] transition-colors">{sec.label}</div>
+                    <span className="arrow-nudge text-[#4a5d23] opacity-0 group-hover:opacity-100 transition-opacity">→</span>
+                  </div>
+                  <div className="text-sm text-[#6b6a63]">{sec.desc}</div>
+                </Link>
+              </HoverGlowCard>
             </Reveal>
           ))}
         </div>

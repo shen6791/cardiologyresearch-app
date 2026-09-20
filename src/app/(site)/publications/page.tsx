@@ -2,7 +2,7 @@ import { createClient } from '@/lib/supabase/server';
 import type { Publication } from '@/lib/types';
 import PageHeader from '@/components/PageHeader';
 import PreviewButton from '@/components/PreviewButton';
-import Reveal from '@/components/Reveal';
+import StickyStack from '@/components/StickyStack';
 
 export const metadata = { title: 'Publications — Dr. Faslur Rahuman' };
 
@@ -14,21 +14,27 @@ export default async function PublicationsPage() {
   return (
     <div>
       <PageHeader eyebrow="Research" title="Publications" sub={`${pubs.length} peer-reviewed articles in cardiology and cardiovascular disease.`} />
-      <div className="max-w-5xl mx-auto px-6 pb-24 flex flex-col gap-4">
-        {pubs.map((p, i) => (
-          <Reveal key={p.id} delay={Math.min(i * 60, 240)}>
-            <div className="card-lift border border-[#e6e3db] rounded-lg p-6 flex flex-col gap-3">
-              <div className="text-xs font-semibold tracking-wide uppercase text-[#0f5d52]">{p.publisher}{p.year ? ` · ${p.year}` : ''}</div>
-              <div className="font-medium text-[#1c1c1a] leading-snug">{p.title}</div>
-              <div className="flex gap-5 text-sm font-medium">
-                {p.full_article_url && <PreviewButton label="Abstract" url={p.full_article_url} title={p.title} />}
-                {p.full_article_url && <a href={p.full_article_url} target="_blank" rel="noopener" className="text-[#0f5d52] hover:underline">Full Article</a>}
-                {p.pdf_url && <PreviewButton label="PDF" url={p.pdf_url} title={p.title} />}
+      <div className="max-w-5xl mx-auto px-6 pb-24">
+        {pubs.length === 0 ? (
+          <div className="text-sm text-[#6b6a63]">No publications yet.</div>
+        ) : (
+          <StickyStack>
+            {pubs.map((p, i) => (
+              <div key={p.id} className="relative border border-[#e9e7e0] rounded-2xl p-8 bg-white flex flex-col gap-3 overflow-hidden shadow-[0_20px_50px_-30px_rgba(0,0,0,0.15)]">
+                <span className="font-display absolute -top-6 right-4 text-[110px] font-extrabold text-[#1a1a17]/[0.03] select-none leading-none">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <div className="relative text-xs font-semibold tracking-wide uppercase text-[#4a5d23]">{p.publisher}{p.year ? ` · ${p.year}` : ''}</div>
+                <div className="relative font-medium text-[#1a1a17] leading-snug text-lg max-w-2xl">{p.title}</div>
+                <div className="relative flex gap-5 text-sm font-medium pt-1">
+                  {p.full_article_url && <PreviewButton label="Abstract" url={p.full_article_url} title={p.title} />}
+                  {p.full_article_url && <a href={p.full_article_url} target="_blank" rel="noopener" className="text-[#4a5d23] hover:underline">Full Article</a>}
+                  {p.pdf_url && <PreviewButton label="PDF" url={p.pdf_url} title={p.title} />}
+                </div>
               </div>
-            </div>
-          </Reveal>
-        ))}
-        {pubs.length === 0 && <div className="text-sm text-[#6b6a63]">No publications yet.</div>}
+            ))}
+          </StickyStack>
+        )}
       </div>
     </div>
   );

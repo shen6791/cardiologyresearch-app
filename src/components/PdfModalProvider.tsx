@@ -29,7 +29,7 @@ export default function PdfModalProvider({ children }: { children: React.ReactNo
             </div>
             <iframe src={modal.url} className="flex-1 w-full bg-white" title="Document preview" />
             <div className="px-6 py-4 border-t border-[#e6e3db] flex justify-end">
-              <a href={modal.url} target="_blank" rel="noopener" className="px-5 py-2 rounded-md border border-[#d8d4c8] text-sm font-medium hover:border-[#0f5d52]">Open in new tab</a>
+              <a href={modal.url} target="_blank" rel="noopener" className="px-5 py-2 rounded-md border border-[#d8d4c8] text-sm font-medium hover:border-[#4a5d23]">Open in new tab</a>
             </div>
           </div>
         </div>

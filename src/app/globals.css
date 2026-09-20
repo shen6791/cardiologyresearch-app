@@ -3,18 +3,19 @@
 :root {
   --bg: #ffffff;
   --bg-soft: #f7f6f3;
-  --border: #e6e3db;
-  --text: #1c1c1a;
+  --border: #e9e7e0;
+  --text: #1a1a17;
   --muted: #6b6a63;
-  --accent: #0f5d52;
-  --accent-soft: #eaf2f0;
+  --accent: #4a5d23;
+  --accent-soft: #eef1e5;
+  --clay: #c86b51;
 }
 
 @theme inline {
   --color-bg: var(--bg);
   --color-accent: var(--accent);
-  --font-sans: var(--font-sans);
-  --font-display: var(--font-display);
+  --font-sans: 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Cabinet Grotesk', ui-sans-serif, system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -22,10 +23,21 @@
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
+  font-family: var(--font-sans);
+  position: relative;
 }
 
-.font-display { font-family: var(--font-display, ui-serif); }
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+.font-display { font-family: var(--font-display); font-weight: 800; }
 
 ::selection { background: #cfe3df; }
 
@@ -117,6 +129,12 @@ button:hover .arrow-nudge {
   height: 2px;
   background: linear-gradient(90deg, var(--accent), transparent);
 }
+
+.hover-glow-card { --mouse-x: 50%; --mouse-y: 50%; }
+.hover-glow-layer {
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), rgba(74, 93, 35, 0.14) 0%, transparent 55%);
+}
+.hover-glow-card:hover .hover-glow-layer { opacity: 1; }
 
 .gradient-text {
   background: linear-gradient(100deg, #0f5d52, #1c7a6b 60%, #0f5d52);
