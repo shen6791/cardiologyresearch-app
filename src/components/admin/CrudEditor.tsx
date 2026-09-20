@@ -60,23 +60,23 @@ export default function CrudEditor({
       <div className="flex justify-end">
         <button
           onClick={() => { setCreating(true); setEditing(null); }}
-          className="px-5 py-2.5 rounded-full bg-[#0f5d52] text-[#ffffff] text-sm font-semibold hover:brightness-110"
+          className="px-5 py-2.5 rounded-full bg-[var(--accent)] text-[var(--bg)] text-sm font-semibold hover:brightness-110"
         >
           + Add new
         </button>
       </div>
 
       {activeRow && (
-        <div className="border border-[#e6e3db] bg-white rounded-2xl p-6 flex flex-col gap-4">
+        <div className="border border-[var(--border)] bg-[var(--bg)] rounded-2xl p-6 flex flex-col gap-4">
           {fields.map((f) => (
             <div key={f.name} className="flex flex-col gap-2">
-              <label className="text-xs text-[#6b6a63]">{f.label}</label>
+              <label className="text-xs text-[var(--muted)]">{f.label}</label>
               {f.type === 'textarea' ? (
                 <textarea
                   rows={4}
                   value={(activeRow[f.name] as string) ?? ''}
                   onChange={(e) => setEditingField(f.name, e.target.value)}
-                  className="bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-4 py-3 outline-none focus:border-[#0f5d52]"
+                  className="bg-[var(--bg-soft)] border border-[var(--border)] rounded-lg px-4 py-3 outline-none focus:border-[var(--accent)]"
                 />
               ) : f.type === 'checkbox' ? (
                 <input
@@ -90,16 +90,16 @@ export default function CrudEditor({
                   type={f.type === 'number' ? 'number' : f.type === 'url' ? 'url' : 'text'}
                   value={(activeRow[f.name] as string | number) ?? ''}
                   onChange={(e) => setEditingField(f.name, f.type === 'number' ? Number(e.target.value) : e.target.value)}
-                  className="bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-4 py-3 outline-none focus:border-[#0f5d52]"
+                  className="bg-[var(--bg-soft)] border border-[var(--border)] rounded-lg px-4 py-3 outline-none focus:border-[var(--accent)]"
                 />
               )}
             </div>
           ))}
           <div className="flex gap-3 pt-2">
-            <button disabled={busy} onClick={() => save(activeRow)} className="px-5 py-2.5 rounded-full bg-[#0f5d52] text-[#ffffff] text-sm font-semibold hover:brightness-110 disabled:opacity-50">
+            <button disabled={busy} onClick={() => save(activeRow)} className="px-5 py-2.5 rounded-full bg-[var(--accent)] text-[var(--bg)] text-sm font-semibold hover:brightness-110 disabled:opacity-50">
               {busy ? 'Saving…' : 'Save'}
             </button>
-            <button onClick={() => { setEditing(null); setCreating(false); }} className="px-5 py-2.5 rounded-full border border-[#e6e3db] text-sm font-semibold">
+            <button onClick={() => { setEditing(null); setCreating(false); }} className="px-5 py-2.5 rounded-full border border-[var(--border)] text-sm font-semibold">
               Cancel
             </button>
           </div>
@@ -108,15 +108,15 @@ export default function CrudEditor({
 
       <div className="flex flex-col gap-3">
         {rows.map((row) => (
-          <div key={row.id} className="border border-[#e6e3db] bg-white rounded-xl p-5 flex items-center justify-between gap-4">
+          <div key={row.id} className="border border-[var(--border)] bg-[var(--bg)] rounded-xl p-5 flex items-center justify-between gap-4">
             <div className="font-medium truncate">{String(row[titleField] ?? '(untitled)')}</div>
             <div className="flex gap-3 flex-none text-sm font-semibold">
-              <button onClick={() => { setEditing(row); setCreating(false); }} className="text-[#0f5d52] hover:underline">Edit</button>
-              <button onClick={() => remove(row.id)} className="text-[#ff6b6b] hover:underline">Delete</button>
+              <button onClick={() => { setEditing(row); setCreating(false); }} className="text-[var(--accent)] hover:underline">Edit</button>
+              <button onClick={() => remove(row.id)} className="text-[var(--danger)] hover:underline">Delete</button>
             </div>
           </div>
         ))}
-        {rows.length === 0 && <div className="text-sm text-[#6b6a63] text-center py-10">No entries yet.</div>}
+        {rows.length === 0 && <div className="text-sm text-[var(--muted)] text-center py-10">No entries yet.</div>}
       </div>
     </div>
   );

@@ -36,9 +36,9 @@ export default function AnimatedStat({ value, label }: { value: string; label: s
   }, [target]);
 
   return (
-    <div ref={ref} className="p-8 text-center border-r border-[#e6e3db] last:border-r-0">
-      <div className="font-display text-2xl font-semibold text-[#1d4ed8] tabular-nums">{display}{suffix}</div>
-      <div className="text-xs text-[#6b6a63] mt-2">{label}</div>
+    <div ref={ref} className="p-8 text-center border-r border-[var(--border)] last:border-r-0">
+      <div className="font-display text-2xl font-semibold text-[var(--accent)] tabular-nums">{display}{suffix}</div>
+      <div className="text-xs text-[var(--muted)] mt-2">{label}</div>
     </div>
   );
 }

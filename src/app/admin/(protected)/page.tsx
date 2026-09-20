@@ -25,13 +25,13 @@ export default async function AdminDashboard() {
     <div className="flex flex-col gap-8">
       <div>
         <h1 className="font-display text-2xl font-semibold">Dashboard</h1>
-        <p className="text-sm text-[#6b6a63] mt-1">Manage every section of the public site from here.</p>
+        <p className="text-sm text-[var(--muted)] mt-1">Manage every section of the public site from here.</p>
       </div>
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {cards.map((c) => (
-          <Link key={c.href} href={c.href} className="border border-[#e6e3db] bg-white rounded-2xl p-6 hover:border-[#0f5d52]/50 transition">
-            <div className="text-3xl font-display font-semibold text-[#0f5d52]">{c.count}</div>
-            <div className="text-sm text-[#6b6a63] mt-1">{c.label}</div>
+          <Link key={c.href} href={c.href} className="border border-[var(--border)] bg-[var(--bg)] rounded-2xl p-6 hover:border-[var(--accent)]/50 transition">
+            <div className="text-3xl font-display font-semibold text-[var(--accent)]">{c.count}</div>
+            <div className="text-sm text-[var(--muted)] mt-1">{c.label}</div>
           </Link>
         ))}
       </div>

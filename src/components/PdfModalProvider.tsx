@@ -22,14 +22,14 @@ export default function PdfModalProvider({ children }: { children: React.ReactNo
           className="fixed inset-0 z-[100] bg-black/50 flex items-center justify-center p-6"
           onClick={(e) => { if (e.target === e.currentTarget) setModal(null); }}
         >
-          <div className="w-full max-w-4xl max-h-[88vh] bg-white border border-[#e6e3db] rounded-xl flex flex-col overflow-hidden shadow-xl">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[#e6e3db]">
+          <div className="w-full max-w-4xl max-h-[88vh] bg-[var(--bg)] border border-[var(--border)] rounded-xl flex flex-col overflow-hidden shadow-xl">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[var(--border)]">
               <div className="font-display font-medium truncate pr-4">{modal.title}</div>
-              <button onClick={() => setModal(null)} className="text-2xl leading-none text-[#6b6a63] hover:text-black">&times;</button>
+              <button onClick={() => setModal(null)} className="text-2xl leading-none text-[var(--muted)] hover:text-black">&times;</button>
             </div>
-            <iframe src={modal.url} className="flex-1 w-full bg-white" title="Document preview" />
-            <div className="px-6 py-4 border-t border-[#e6e3db] flex justify-end">
-              <a href={modal.url} target="_blank" rel="noopener" className="px-5 py-2 rounded-md border border-[#d8d4c8] text-sm font-medium hover:border-[#1d4ed8]">Open in new tab</a>
+            <iframe src={modal.url} className="flex-1 w-full bg-[var(--bg)]" title="Document preview" />
+            <div className="px-6 py-4 border-t border-[var(--border)] flex justify-end">
+              <a href={modal.url} target="_blank" rel="noopener" className="px-5 py-2 rounded-md border border-[var(--border-strong)] text-sm font-medium hover:border-[var(--accent)]">Open in new tab</a>
             </div>
           </div>
         </div>

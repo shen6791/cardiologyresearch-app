@@ -14,13 +14,13 @@ export default async function AbstractsPage() {
   return (
     <div>
       <PageHeader eyebrow="Research" title="Abstracts" sub={`${pubs.length} abstracts from published work.`} />
-      <div className="max-w-5xl mx-auto px-6 pb-24 flex flex-col divide-y divide-[#e6e3db] border border-[#e6e3db] rounded-2xl">
+      <div className="max-w-5xl mx-auto px-6 pb-24 flex flex-col divide-y divide-[var(--border)] border border-[var(--border)] rounded-lg">
         {pubs.map((p, i) => (
           <Reveal key={p.id} delay={Math.min(i * 60, 240)}>
-            <div className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[#f7f6f3] transition-colors">
+            <div className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[var(--bg-soft)] transition-colors">
               <div>
-                <div className="text-xs font-semibold tracking-wide uppercase text-[#1d4ed8]">{p.publisher}{p.year ? ` · ${p.year}` : ''}</div>
-                <div className="font-medium text-[#1c1c1a] mt-1 max-w-xl">{p.title}</div>
+                <div className="text-xs font-semibold tracking-wide uppercase text-[var(--accent)]">{p.publisher}{p.year ? ` · ${p.year}` : ''}</div>
+                <div className="font-medium text-[var(--text)] mt-1 max-w-xl">{p.title}</div>
               </div>
               {p.full_article_url && (
                 <div className="flex-none">
@@ -30,7 +30,7 @@ export default async function AbstractsPage() {
             </div>
           </Reveal>
         ))}
-        {pubs.length === 0 && <div className="p-6 text-sm text-[#6b6a63]">No abstracts yet.</div>}
+        {pubs.length === 0 && <div className="p-6 text-sm text-[var(--muted)]">No abstracts yet.</div>}
       </div>
     </div>
   );
