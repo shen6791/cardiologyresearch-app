@@ -20,13 +20,14 @@ const links = [
 export default function SiteHeader({ doctorName }: { doctorName: string }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  void doctorName;
 
   return (
     <div className="sticky top-0 z-40 bg-[var(--bg)]/90 backdrop-blur border-b border-[var(--border)]">
       <div className="max-w-6xl mx-auto flex items-center justify-between gap-3 px-4 sm:px-6 py-3.5">
         <Link href="/" className="flex items-center gap-2.5 min-w-0">
           <span className="w-8 h-8 rounded-full bg-[var(--accent)] text-white flex items-center justify-center font-display text-xs font-extrabold flex-none">CR</span>
-          <span className="font-display font-bold tracking-tight text-[13px] sm:text-sm truncate">{doctorName}</span>
+          <span className="font-display font-bold tracking-tight text-[13px] sm:text-sm truncate">Ceylon Cardiology Research</span>
         </Link>
 
         <nav className="hidden lg:flex gap-5 text-sm text-[var(--muted)] flex-none">
