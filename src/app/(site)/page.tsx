@@ -60,7 +60,10 @@ export default async function Home() {
       <Reveal>
         <section className="max-w-5xl mx-auto px-6 py-20 flex flex-col md:flex-row gap-14">
           <div className="md:w-48 flex-none text-xs font-semibold tracking-widest uppercase text-[#0f5d52]">About</div>
-          <div className="flex-1 max-w-2xl text-[#3d3c37] leading-relaxed">{s.bio_body}</div>
+          <div className="flex-1 max-w-2xl flex flex-col gap-4 text-[#3d3c37] leading-relaxed">
+            <p>{s.bio_body}</p>
+            {s.bio_outro && <p>{s.bio_outro}</p>}
+          </div>
         </section>
       </Reveal>
 

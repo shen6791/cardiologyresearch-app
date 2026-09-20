@@ -30,6 +30,7 @@ export default function SettingsForm({ initial }: { initial: SiteSettings }) {
       <Field label="Tagline / Hero Headline" value={form.tagline} onChange={(v) => set('tagline', v)} textarea />
       <Field label="About — Intro Paragraph" value={form.bio_intro} onChange={(v) => set('bio_intro', v)} textarea />
       <Field label="About — Body Paragraph" value={form.bio_body} onChange={(v) => set('bio_body', v)} textarea />
+      <Field label="About — Closing Paragraph" value={form.bio_outro} onChange={(v) => set('bio_outro', v)} textarea />
       <Field label="Photo URL" value={form.photo_url ?? ''} onChange={(v) => set('photo_url', v)} />
       <Field label="Contact Email" value={form.contact_email} onChange={(v) => set('contact_email', v)} />
       <div className="flex items-center gap-4 pt-2">

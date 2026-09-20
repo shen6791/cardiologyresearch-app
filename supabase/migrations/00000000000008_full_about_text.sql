@@ -1,0 +1,7 @@
+alter table public.site_settings add column if not exists bio_outro text not null default '';
+
+update public.site_settings set
+  bio_intro = 'Dr. Faslur Rahuman is a full-time General and Interventional Cardiologist, working at the Colombo South Teaching Hospital and in leading private hospitals in Colombo. He has also worked in several hospitals across Sri Lanka, contributing to the development of cardiology units and healthcare services.',
+  bio_body = 'Dr. Rahuman has always taken a keen interest in research, particularly in the fields of interventional and diagnostic cardiology. His passion for research stems from the desire to contribute to advancing medical knowledge and improving patient outcomes. He believes that research offers the opportunity to explore innovative solutions, drive evidence-based practices, and push the boundaries of current medical treatments. He has published several research articles in peer-reviewed journals, mainly focusing on interventional cardiology, has presented free papers at both local and international forums and was one of the principal investigators for the GMRx2 International Multicenter Randomized Trial on a three-drug combination for hypertension, with most participants from Sri Lanka (active and placebo-controlled trials).',
+  bio_outro = 'On this website, all of his work has been gathered to provide readers with valuable insight and will be updated regularly, adding his latest research and achievements to further enhance the knowledge shared.'
+where id = 1;

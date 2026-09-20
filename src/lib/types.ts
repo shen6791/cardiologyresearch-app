@@ -14,6 +14,7 @@ export type SiteSettings = {
   tagline: string;
   bio_intro: string;
   bio_body: string;
+  bio_outro: string;
   photo_url: string | null;
   contact_email: string;
 };
