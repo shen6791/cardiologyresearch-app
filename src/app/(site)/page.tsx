@@ -19,6 +19,7 @@ export default async function Home() {
 
   const sections = [
     { href: '/publications', label: 'Publications', desc: 'Peer-reviewed research articles.' },
+    { href: '/abstracts', label: 'Abstracts', desc: 'Abstracts from published work.' },
     { href: '/clinical-trials', label: 'Clinical Trials', desc: 'Multicenter and investigator-led trials.' },
     { href: '/presentations', label: 'Presentations & Posters', desc: 'Conference talks and posters.' },
     { href: '/articles', label: 'Articles', desc: 'Writing for a general audience.' },
@@ -39,7 +40,7 @@ export default async function Home() {
             <Link href="/contact" className="px-6 py-3 rounded-md border border-[#d8d4c8] text-sm font-medium hover:border-[#0f5d52] transition">Get in Touch</Link>
           </div>
         </div>
-        <img src={s.photo_url ?? '/dr-rahuman.png'} alt={s.doctor_name} className="w-64 h-76 md:w-72 md:h-84 object-cover rounded-xl border border-[#e6e3db] flex-none" />
+        <img src={s.photo_url ?? '/dr-rahuman.png'} alt={s.doctor_name} className="w-56 h-64 sm:w-64 sm:h-72 md:w-72 md:h-80 object-cover rounded-xl border border-[#e6e3db] flex-none" />
       </section>
 
       {/* STATS */}

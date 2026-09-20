@@ -6,6 +6,7 @@ import { useState } from 'react';
 
 const links = [
   { href: '/publications', label: 'Publications' },
+  { href: '/abstracts', label: 'Abstracts' },
   { href: '/clinical-trials', label: 'Clinical Trials' },
   { href: '/presentations', label: 'Presentations' },
   { href: '/articles', label: 'Articles' },
@@ -17,25 +18,26 @@ const links = [
 export default function SiteHeader({ doctorName }: { doctorName: string }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  void doctorName;
 
   return (
     <header className="sticky top-0 z-40 bg-white/95 backdrop-blur border-b border-[#e6e3db]">
-      <div className="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link href="/" className="font-display text-lg font-semibold tracking-tight">{doctorName}</Link>
-        <nav className="hidden md:flex gap-7 text-sm text-[#6b6a63]">
+      <div className="max-w-5xl mx-auto flex items-center justify-between px-4 sm:px-6 py-4">
+        <Link href="/" className="font-display text-base sm:text-lg font-semibold tracking-tight">Ceylon Cardiology Research</Link>
+        <nav className="hidden lg:flex gap-6 text-sm text-[#6b6a63]">
           {links.map((l) => (
             <Link key={l.href} href={l.href} className={`hover:text-[#0f5d52] transition ${pathname === l.href ? 'text-[#0f5d52] font-medium' : ''}`}>
               {l.label}
             </Link>
           ))}
         </nav>
-        <button onClick={() => setOpen((v) => !v)} className="md:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
+        <button onClick={() => setOpen((v) => !v)} className="lg:hidden flex flex-col gap-1.5 p-2" aria-label="Toggle menu">
           <span className="w-5 h-px bg-[#1c1c1a]" />
           <span className="w-5 h-px bg-[#1c1c1a]" />
         </button>
       </div>
       {open && (
-        <nav className="md:hidden border-t border-[#e6e3db] flex flex-col">
+        <nav className="lg:hidden border-t border-[#e6e3db] flex flex-col max-h-[70vh] overflow-y-auto">
           {links.map((l) => (
             <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
               className={`px-6 py-3 text-sm border-b border-[#e6e3db] ${pathname === l.href ? 'text-[#0f5d52] font-medium' : 'text-[#6b6a63]'}`}>
