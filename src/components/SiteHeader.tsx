@@ -36,17 +36,17 @@ export default function SiteHeader({ doctorName }: { doctorName: string }) {
       >
         <div className="flex items-center justify-between px-3 py-2.5">
           <Link href="/" className="flex items-center gap-2.5 pl-2">
-            <span className="w-8 h-8 rounded-full bg-[#4a5d23] text-white flex items-center justify-center font-display text-xs font-extrabold flex-none">CR</span>
+            <span className="w-8 h-8 rounded-full bg-[#1d4ed8] text-white flex items-center justify-center font-display text-xs font-extrabold flex-none">CR</span>
             <span className="font-display font-bold tracking-tight text-sm hidden sm:inline">Ceylon Cardiology Research</span>
           </Link>
           <nav className="hidden lg:flex gap-5 text-sm text-[#6b6a63]">
             {links.map((l) => (
-              <Link key={l.href} href={l.href} className={`nav-link hover:text-[#4a5d23] transition-colors ${pathname === l.href ? 'active text-[#4a5d23] font-medium' : ''}`}>
+              <Link key={l.href} href={l.href} className={`nav-link hover:text-[#1d4ed8] transition-colors ${pathname === l.href ? 'active text-[#1d4ed8] font-medium' : ''}`}>
                 {l.label}
               </Link>
             ))}
           </nav>
-          <Link href="/contact" className="hidden md:inline-flex btn-lift items-center px-5 py-2 rounded-full border border-[#1a1a17]/15 text-sm font-medium hover:border-[#4a5d23] transition-colors">
+          <Link href="/contact" className="hidden md:inline-flex btn-lift items-center px-5 py-2 rounded-full border border-[#1a1a17]/15 text-sm font-medium hover:border-[#1d4ed8] transition-colors">
             Contact
           </Link>
           <button onClick={() => setOpen((v) => !v)} className="lg:hidden flex flex-col gap-1.5 p-2 mr-1" aria-label="Toggle menu">
@@ -58,7 +58,7 @@ export default function SiteHeader({ doctorName }: { doctorName: string }) {
           <nav className="border-t border-[#e9e7e0] flex flex-col overflow-y-auto max-h-[70vh] px-2 pb-2">
             {[...links, { href: '/contact', label: 'Contact' }].map((l) => (
               <Link key={l.href} href={l.href} onClick={() => setOpen(false)}
-                className={`px-4 py-3 text-sm rounded-2xl transition-colors ${pathname === l.href ? 'text-[#4a5d23] font-medium bg-[#eef1e5]' : 'text-[#6b6a63] hover:bg-[#f7f6f3]'}`}>
+                className={`px-4 py-3 text-sm rounded-2xl transition-colors ${pathname === l.href ? 'text-[#1d4ed8] font-medium bg-[#e8eefd]' : 'text-[#6b6a63] hover:bg-[#f7f6f3]'}`}>
                 {l.label}
               </Link>
             ))}

@@ -6,7 +6,7 @@ export default function SiteFooter({ doctorName, email }: { doctorName: string; 
           <div className="font-display font-semibold">{doctorName}</div>
           <div className="text-sm text-[#6b6a63] mt-1">Ceylon Cardiology Research</div>
         </div>
-        <a href={`mailto:${email}`} className="text-[#4a5d23] font-medium text-sm">{email}</a>
+        <a href={`mailto:${email}`} className="text-[#1d4ed8] font-medium text-sm">{email}</a>
         <div className="text-sm text-[#6b6a63]">© {new Date().getFullYear()} Cardiology Research</div>
       </div>
     </footer>

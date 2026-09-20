@@ -19,7 +19,7 @@ export default async function ContactPage() {
           <div className="card-lift border border-[#e6e3db] rounded-2xl p-8 h-fit">
             <div className="font-display font-semibold text-lg">{s.doctor_name}</div>
             <div className="text-sm text-[#6b6a63] mt-1 mb-6">Ceylon Cardiology Research</div>
-            <a href={`mailto:${s.contact_email}`} className="btn-lift inline-block px-6 py-3 rounded-md bg-[#4a5d23] text-white font-medium text-sm">
+            <a href={`mailto:${s.contact_email}`} className="btn-lift inline-block px-6 py-3 rounded-md bg-[#1d4ed8] text-white font-medium text-sm">
               Email {s.contact_email}
             </a>
           </div>

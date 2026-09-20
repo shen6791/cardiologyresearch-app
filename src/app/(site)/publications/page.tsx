@@ -24,11 +24,11 @@ export default async function PublicationsPage() {
                 <span className="font-display absolute -top-6 right-4 text-[110px] font-extrabold text-[#1a1a17]/[0.03] select-none leading-none">
                   {String(i + 1).padStart(2, '0')}
                 </span>
-                <div className="relative text-xs font-semibold tracking-wide uppercase text-[#4a5d23]">{p.publisher}{p.year ? ` · ${p.year}` : ''}</div>
+                <div className="relative text-xs font-semibold tracking-wide uppercase text-[#1d4ed8]">{p.publisher}{p.year ? ` · ${p.year}` : ''}</div>
                 <div className="relative font-medium text-[#1a1a17] leading-snug text-lg max-w-2xl">{p.title}</div>
                 <div className="relative flex gap-5 text-sm font-medium pt-1">
                   {p.full_article_url && <PreviewButton label="Abstract" url={p.full_article_url} title={p.title} />}
-                  {p.full_article_url && <a href={p.full_article_url} target="_blank" rel="noopener" className="text-[#4a5d23] hover:underline">Full Article</a>}
+                  {p.full_article_url && <a href={p.full_article_url} target="_blank" rel="noopener" className="text-[#1d4ed8] hover:underline">Full Article</a>}
                   {p.pdf_url && <PreviewButton label="PDF" url={p.pdf_url} title={p.title} />}
                 </div>
               </div>

@@ -19,7 +19,7 @@ export default async function TrialsPage() {
             <div className="card-lift border border-[#e6e3db] rounded-2xl p-7 flex flex-col gap-3 bg-[#f7f6f3]">
               <div className="font-display text-xl font-semibold">{t.title}</div>
               <p className="text-[#3d3c37] leading-relaxed">{t.description}</p>
-              {t.link_url && <a href={t.link_url} target="_blank" rel="noopener" className="text-[#4a5d23] font-medium text-sm">{t.link_label ?? 'Read more'} →</a>}
+              {t.link_url && <a href={t.link_url} target="_blank" rel="noopener" className="text-[#1d4ed8] font-medium text-sm">{t.link_label ?? 'Read more'} →</a>}
             </div>
           </Reveal>
         ))}

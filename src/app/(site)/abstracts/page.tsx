@@ -19,7 +19,7 @@ export default async function AbstractsPage() {
           <Reveal key={p.id} delay={Math.min(i * 60, 240)}>
             <div className="p-6 flex flex-col md:flex-row md:items-center justify-between gap-4 hover:bg-[#f7f6f3] transition-colors">
               <div>
-                <div className="text-xs font-semibold tracking-wide uppercase text-[#4a5d23]">{p.publisher}{p.year ? ` · ${p.year}` : ''}</div>
+                <div className="text-xs font-semibold tracking-wide uppercase text-[#1d4ed8]">{p.publisher}{p.year ? ` · ${p.year}` : ''}</div>
                 <div className="font-medium text-[#1c1c1a] mt-1 max-w-xl">{p.title}</div>
               </div>
               {p.full_article_url && (

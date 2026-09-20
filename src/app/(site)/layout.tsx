@@ -3,6 +3,7 @@ import type { SiteSettings } from '@/lib/types';
 import SiteHeader from '@/components/SiteHeader';
 import SiteFooter from '@/components/SiteFooter';
 import PdfModalProvider from '@/components/PdfModalProvider';
+import ScrollToTop from '@/components/ScrollToTop';
 
 export const revalidate = 0;
 
@@ -16,6 +17,7 @@ export default async function SiteLayout({ children }: { children: React.ReactNo
       <SiteHeader doctorName={s?.doctor_name ?? 'Dr. Faslur Rahuman'} />
       <main>{children}</main>
       <SiteFooter doctorName={s?.doctor_name ?? 'Dr. Faslur Rahuman'} email={s?.contact_email ?? 'csthcardioresearch@gmail.com'} />
+      <ScrollToTop />
     </PdfModalProvider>
   );
 }

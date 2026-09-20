@@ -23,7 +23,7 @@ export default async function PresentationsPage() {
               </div>
               <div className="flex gap-4 flex-wrap flex-none">
                 {p.presentation_links?.map((l) => (
-                  <a key={l.id} href={l.url} target="_blank" rel="noopener" className="text-sm font-medium text-[#4a5d23] hover:underline">{l.label} →</a>
+                  <a key={l.id} href={l.url} target="_blank" rel="noopener" className="text-sm font-medium text-[#1d4ed8] hover:underline">{l.label} →</a>
                 ))}
               </div>
             </div>
