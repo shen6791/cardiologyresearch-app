@@ -25,7 +25,7 @@ export default function SettingsForm({ initial }: { initial: SiteSettings }) {
   }
 
   return (
-    <div className="glass rounded-2xl p-7 flex flex-col gap-5 max-w-2xl">
+    <div className="border border-[#e6e3db] bg-white rounded-2xl p-7 flex flex-col gap-5 max-w-2xl">
       <Field label="Doctor Name" value={form.doctor_name} onChange={(v) => set('doctor_name', v)} />
       <Field label="Tagline / Hero Headline" value={form.tagline} onChange={(v) => set('tagline', v)} textarea />
       <Field label="About — Intro Paragraph" value={form.bio_intro} onChange={(v) => set('bio_intro', v)} textarea />
@@ -33,10 +33,10 @@ export default function SettingsForm({ initial }: { initial: SiteSettings }) {
       <Field label="Photo URL" value={form.photo_url ?? ''} onChange={(v) => set('photo_url', v)} />
       <Field label="Contact Email" value={form.contact_email} onChange={(v) => set('contact_email', v)} />
       <div className="flex items-center gap-4 pt-2">
-        <button disabled={busy} onClick={save} className="px-6 py-3 rounded-full bg-[#4fe3c1] text-[#05070c] font-semibold text-sm hover:brightness-110 disabled:opacity-50">
+        <button disabled={busy} onClick={save} className="px-6 py-3 rounded-full bg-[#0f5d52] text-[#ffffff] font-semibold text-sm hover:brightness-110 disabled:opacity-50">
           {busy ? 'Saving…' : 'Save Changes'}
         </button>
-        {saved && <span className="text-sm text-[#4fe3c1]">Saved.</span>}
+        {saved && <span className="text-sm text-[#0f5d52]">Saved.</span>}
       </div>
     </div>
   );
@@ -45,13 +45,13 @@ export default function SettingsForm({ initial }: { initial: SiteSettings }) {
 function Field({ label, value, onChange, textarea }: { label: string; value: string; onChange: (v: string) => void; textarea?: boolean }) {
   return (
     <div className="flex flex-col gap-2">
-      <label className="text-xs text-[#8a97b8]">{label}</label>
+      <label className="text-xs text-[#6b6a63]">{label}</label>
       {textarea ? (
         <textarea rows={3} value={value} onChange={(e) => onChange(e.target.value)}
-          className="bg-[#0b0f1a] border border-[#1e2740] rounded-lg px-4 py-3 outline-none focus:border-[#4fe3c1]" />
+          className="bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-4 py-3 outline-none focus:border-[#0f5d52]" />
       ) : (
         <input value={value} onChange={(e) => onChange(e.target.value)}
-          className="bg-[#0b0f1a] border border-[#1e2740] rounded-lg px-4 py-3 outline-none focus:border-[#4fe3c1]" />
+          className="bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-4 py-3 outline-none focus:border-[#0f5d52]" />
       )}
     </div>
   );

@@ -1,20 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #05070c;
-  --bg-elev: #0b0f1a;
-  --panel: #0f1524;
-  --border: #1e2740;
-  --text: #eaf0ff;
-  --muted: #8a97b8;
-  --accent: #4fe3c1;
-  --accent-2: #6a8cff;
-  --danger: #ff6b6b;
+  --bg: #ffffff;
+  --bg-soft: #f7f6f3;
+  --border: #e6e3db;
+  --text: #1c1c1a;
+  --muted: #6b6a63;
+  --accent: #0f5d52;
+  --accent-soft: #eaf2f0;
 }
 
 @theme inline {
   --color-bg: var(--bg);
-  --color-panel: var(--panel);
   --color-accent: var(--accent);
   --font-sans: var(--font-sans);
   --font-display: var(--font-display);
@@ -28,29 +25,8 @@ body {
   font-family: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
 }
 
-.font-display { font-family: var(--font-display, ui-sans-serif); }
+.font-display { font-family: var(--font-display, ui-serif); }
 
-.grid-glow {
-  background-image:
-    radial-gradient(600px circle at 15% 0%, rgba(79,227,193,0.14), transparent 60%),
-    radial-gradient(700px circle at 85% 20%, rgba(106,140,255,0.14), transparent 60%),
-    linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px);
-  background-size: auto, auto, 42px 42px, 42px 42px;
-}
+::selection { background: #cfe3df; }
 
-.glass {
-  background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-  border: 1px solid var(--border);
-  backdrop-filter: blur(10px);
-}
-
-.glow-text {
-  text-shadow: 0 0 30px rgba(79,227,193,0.35);
-}
-
-::selection { background: rgba(79,227,193,0.3); }
-
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: var(--bg); }
-::-webkit-scrollbar-thumb { background: #1e2740; border-radius: 8px; }
+a { text-underline-offset: 3px; }

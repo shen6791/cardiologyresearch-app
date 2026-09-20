@@ -41,24 +41,24 @@ export default function UsersEditor({ initialProfiles, initialInvites, currentUs
 
   return (
     <div className="flex flex-col gap-8">
-      <div className="glass rounded-2xl p-7 flex flex-col gap-4">
+      <div className="border border-[#e6e3db] bg-white rounded-2xl p-7 flex flex-col gap-4">
         <div className="font-display font-medium">Invite a new admin</div>
-        <p className="text-sm text-[#8a97b8]">Enter the email address of the person you want to give access to. They then sign up at <span className="text-white">/admin/signup</span> with that exact email and are automatically granted the role below.</p>
+        <p className="text-sm text-[#6b6a63]">Enter the email address of the person you want to give access to. They then sign up at <span className="text-white">/admin/signup</span> with that exact email and are automatically granted the role below.</p>
         <form onSubmit={sendInvite} className="flex gap-3 flex-wrap items-end">
           <div className="flex flex-col gap-2 flex-1 min-w-52">
-            <label className="text-xs text-[#8a97b8]">Email</label>
+            <label className="text-xs text-[#6b6a63]">Email</label>
             <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-              className="bg-[#0b0f1a] border border-[#1e2740] rounded-lg px-4 py-3 outline-none focus:border-[#4fe3c1]" />
+              className="bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-4 py-3 outline-none focus:border-[#0f5d52]" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-xs text-[#8a97b8]">Role</label>
+            <label className="text-xs text-[#6b6a63]">Role</label>
             <select value={role} onChange={(e) => setRole(e.target.value as AppRole)}
-              className="bg-[#0b0f1a] border border-[#1e2740] rounded-lg px-4 py-3 outline-none focus:border-[#4fe3c1]">
+              className="bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-4 py-3 outline-none focus:border-[#0f5d52]">
               <option value="admin">Admin</option>
               <option value="super_admin">Super Admin</option>
             </select>
           </div>
-          <button disabled={busy} className="px-6 py-3 rounded-full bg-[#4fe3c1] text-[#05070c] font-semibold text-sm hover:brightness-110 disabled:opacity-50">
+          <button disabled={busy} className="px-6 py-3 rounded-full bg-[#0f5d52] text-[#ffffff] font-semibold text-sm hover:brightness-110 disabled:opacity-50">
             Send Invite
           </button>
         </form>
@@ -66,10 +66,10 @@ export default function UsersEditor({ initialProfiles, initialInvites, currentUs
 
       {invites.length > 0 && (
         <div className="flex flex-col gap-3">
-          <div className="text-xs text-[#8a97b8] uppercase tracking-wide">Pending invites</div>
+          <div className="text-xs text-[#6b6a63] uppercase tracking-wide">Pending invites</div>
           {invites.map((inv) => (
-            <div key={inv.email} className="glass rounded-xl p-4 flex items-center justify-between">
-              <div className="text-sm">{inv.email} <span className="text-[#4fe3c1] ml-2">{inv.role}</span></div>
+            <div key={inv.email} className="border border-[#e6e3db] bg-white rounded-xl p-4 flex items-center justify-between">
+              <div className="text-sm">{inv.email} <span className="text-[#0f5d52] ml-2">{inv.role}</span></div>
               <button onClick={() => revokeInvite(inv.email)} className="text-[#ff6b6b] text-sm font-semibold">Revoke</button>
             </div>
           ))}
@@ -77,13 +77,13 @@ export default function UsersEditor({ initialProfiles, initialInvites, currentUs
       )}
 
       <div className="flex flex-col gap-3">
-        <div className="text-xs text-[#8a97b8] uppercase tracking-wide">Active admins</div>
+        <div className="text-xs text-[#6b6a63] uppercase tracking-wide">Active admins</div>
         {profiles.map((p) => (
-          <div key={p.id} className="glass rounded-xl p-4 flex items-center justify-between gap-4 flex-wrap">
-            <div className="text-sm">{p.email} {p.id === currentUserId && <span className="text-[#8a97b8]">(you)</span>}</div>
+          <div key={p.id} className="border border-[#e6e3db] bg-white rounded-xl p-4 flex items-center justify-between gap-4 flex-wrap">
+            <div className="text-sm">{p.email} {p.id === currentUserId && <span className="text-[#6b6a63]">(you)</span>}</div>
             <div className="flex items-center gap-3">
               <select value={p.role} onChange={(e) => changeRole(p.id, e.target.value as AppRole)} disabled={p.id === currentUserId}
-                className="bg-[#0b0f1a] border border-[#1e2740] rounded-lg px-3 py-2 text-sm outline-none focus:border-[#4fe3c1] disabled:opacity-50">
+                className="bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-3 py-2 text-sm outline-none focus:border-[#0f5d52] disabled:opacity-50">
                 <option value="admin">Admin</option>
                 <option value="super_admin">Super Admin</option>
               </select>

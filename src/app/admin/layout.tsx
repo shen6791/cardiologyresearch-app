@@ -13,18 +13,18 @@ export default async function AdminLayout({ children }: { children: React.ReactN
 
   if (!profile) {
     return (
-      <div className="min-h-screen grid-glow flex items-center justify-center px-6">
-        <div className="glass rounded-2xl p-10 max-w-md text-center flex flex-col gap-4">
+      <div className="min-h-screen bg-[#f7f6f3] flex items-center justify-center px-6">
+        <div className="border border-[#e6e3db] bg-white rounded-2xl p-10 max-w-md text-center flex flex-col gap-4">
           <div className="font-display text-xl font-semibold">Not Authorized</div>
-          <p className="text-sm text-[#8a97b8]">Your account isn&apos;t linked to an admin role yet. Ask a super admin to invite <span className="text-white">{user.email}</span>.</p>
-          <a href="/admin/login" className="text-[#4fe3c1] text-sm font-semibold">Back to login</a>
+          <p className="text-sm text-[#6b6a63]">Your account isn&apos;t linked to an admin role yet. Ask a super admin to invite <span className="text-white">{user.email}</span>.</p>
+          <a href="/admin/login" className="text-[#0f5d52] text-sm font-semibold">Back to login</a>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen grid-glow flex">
+    <div className="min-h-screen bg-[#f7f6f3] flex">
       <AdminNav role={(profile as Profile).role} email={(profile as Profile).email} />
       <main className="flex-1 p-8 max-w-5xl">{children}</main>
     </div>

@@ -32,35 +32,35 @@ export default function SignupPage() {
   }
 
   return (
-    <div className="min-h-screen grid-glow flex items-center justify-center px-6">
-      <form onSubmit={handleSubmit} className="glass rounded-2xl p-10 w-full max-w-sm flex flex-col gap-5">
+    <div className="min-h-screen bg-[#f7f6f3] flex items-center justify-center px-6">
+      <form onSubmit={handleSubmit} className="border border-[#e6e3db] bg-white rounded-2xl p-10 w-full max-w-sm flex flex-col gap-5">
         <div className="text-center mb-2">
           <div className="font-display text-2xl font-semibold">Admin Sign Up</div>
-          <div className="text-sm text-[#8a97b8] mt-1">Use the exact email a super admin invited</div>
+          <div className="text-sm text-[#6b6a63] mt-1">Use the exact email a super admin invited</div>
         </div>
         {error && <div className="text-sm text-[#ff6b6b] bg-[#ff6b6b]/10 border border-[#ff6b6b]/30 rounded-lg px-4 py-3">{error}</div>}
         {done ? (
-          <div className="text-sm text-[#4fe3c1] text-center">
+          <div className="text-sm text-[#0f5d52] text-center">
             Account created. If email confirmation is required, check your inbox, then <a href="/admin/login" className="underline">sign in</a>.
           </div>
         ) : (
           <>
             <div className="flex flex-col gap-2">
-              <label className="text-xs text-[#8a97b8]">Email</label>
+              <label className="text-xs text-[#6b6a63]">Email</label>
               <input required type="email" value={email} onChange={(e) => setEmail(e.target.value)}
-                className="bg-[#0b0f1a] border border-[#1e2740] rounded-lg px-4 py-3 outline-none focus:border-[#4fe3c1]" />
+                className="bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-4 py-3 outline-none focus:border-[#0f5d52]" />
             </div>
             <div className="flex flex-col gap-2">
-              <label className="text-xs text-[#8a97b8]">Password</label>
+              <label className="text-xs text-[#6b6a63]">Password</label>
               <input required minLength={6} type="password" value={password} onChange={(e) => setPassword(e.target.value)}
-                className="bg-[#0b0f1a] border border-[#1e2740] rounded-lg px-4 py-3 outline-none focus:border-[#4fe3c1]" />
+                className="bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-4 py-3 outline-none focus:border-[#0f5d52]" />
             </div>
-            <button disabled={loading} className="mt-2 bg-[#4fe3c1] text-[#05070c] font-semibold rounded-lg py-3 hover:brightness-110 transition disabled:opacity-50">
+            <button disabled={loading} className="mt-2 bg-[#0f5d52] text-[#ffffff] font-semibold rounded-lg py-3 hover:brightness-110 transition disabled:opacity-50">
               {loading ? 'Creating…' : 'Create Account'}
             </button>
           </>
         )}
-        <a href="/admin/login" className="text-center text-sm text-[#8a97b8] hover:text-white">Already have an account? Sign in</a>
+        <a href="/admin/login" className="text-center text-sm text-[#6b6a63] hover:text-white">Already have an account? Sign in</a>
       </form>
     </div>
   );

@@ -57,33 +57,33 @@ export default function PresentationsEditor({ initial }: { initial: Presentation
   return (
     <div className="flex flex-col gap-6">
       <div className="flex justify-end">
-        <button onClick={addPresentation} className="px-5 py-2.5 rounded-full bg-[#4fe3c1] text-[#05070c] text-sm font-semibold hover:brightness-110">+ Add presentation</button>
+        <button onClick={addPresentation} className="px-5 py-2.5 rounded-full bg-[#0f5d52] text-[#ffffff] text-sm font-semibold hover:brightness-110">+ Add presentation</button>
       </div>
       {items.map((p) => (
-        <div key={p.id} className="glass rounded-2xl p-6 flex flex-col gap-4">
+        <div key={p.id} className="border border-[#e6e3db] bg-white rounded-2xl p-6 flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <label className="text-xs text-[#8a97b8]">Title</label>
+            <label className="text-xs text-[#6b6a63]">Title</label>
             <textarea rows={2} value={p.title} onChange={(e) => updatePresentation(p.id, 'title', e.target.value)} onBlur={() => savePresentation(p)}
-              className="bg-[#0b0f1a] border border-[#1e2740] rounded-lg px-4 py-3 outline-none focus:border-[#4fe3c1]" />
+              className="bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-4 py-3 outline-none focus:border-[#0f5d52]" />
           </div>
           <div className="flex flex-col gap-2">
-            <label className="text-xs text-[#8a97b8]">Presented At</label>
+            <label className="text-xs text-[#6b6a63]">Presented At</label>
             <input value={p.presented_at ?? ''} onChange={(e) => updatePresentation(p.id, 'presented_at', e.target.value)} onBlur={() => savePresentation(p)}
-              className="bg-[#0b0f1a] border border-[#1e2740] rounded-lg px-4 py-3 outline-none focus:border-[#4fe3c1]" />
+              className="bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-4 py-3 outline-none focus:border-[#0f5d52]" />
           </div>
 
-          <div className="flex flex-col gap-3 pl-4 border-l border-[#1e2740]">
-            <div className="text-xs text-[#8a97b8]">Links</div>
+          <div className="flex flex-col gap-3 pl-4 border-l border-[#e6e3db]">
+            <div className="text-xs text-[#6b6a63]">Links</div>
             {p.presentation_links?.map((l) => (
               <div key={l.id} className="flex gap-3 items-center">
                 <input value={l.label} onChange={(e) => updateLink(p.id, l.id, 'label', e.target.value)} onBlur={() => saveLink({ ...l, label: l.label })}
-                  className="w-28 bg-[#0b0f1a] border border-[#1e2740] rounded-lg px-3 py-2 text-sm outline-none focus:border-[#4fe3c1]" />
+                  className="w-28 bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-3 py-2 text-sm outline-none focus:border-[#0f5d52]" />
                 <input value={l.url} onChange={(e) => updateLink(p.id, l.id, 'url', e.target.value)} onBlur={() => saveLink({ ...l, url: l.url })}
-                  className="flex-1 bg-[#0b0f1a] border border-[#1e2740] rounded-lg px-3 py-2 text-sm outline-none focus:border-[#4fe3c1]" />
+                  className="flex-1 bg-[#f7f6f3] border border-[#e6e3db] rounded-lg px-3 py-2 text-sm outline-none focus:border-[#0f5d52]" />
                 <button onClick={() => removeLink(p.id, l.id)} className="text-[#ff6b6b] text-sm font-semibold">Remove</button>
               </div>
             ))}
-            <button onClick={() => addLink(p.id)} className="text-[#6a8cff] text-sm font-semibold self-start">+ Add link</button>
+            <button onClick={() => addLink(p.id)} className="text-[#0f5d52] text-sm font-semibold self-start">+ Add link</button>
           </div>
 
           <div className="flex justify-end pt-2">
@@ -91,7 +91,7 @@ export default function PresentationsEditor({ initial }: { initial: Presentation
           </div>
         </div>
       ))}
-      {busy && <div className="text-xs text-[#8a97b8]">Saving…</div>}
+      {busy && <div className="text-xs text-[#6b6a63]">Saving…</div>}
     </div>
   );
 }

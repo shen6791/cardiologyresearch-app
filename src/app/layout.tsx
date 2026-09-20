@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Space_Grotesk } from "next/font/google";
+import { Source_Serif_4, Inter } from "next/font/google";
 import "./globals.css";
 
 const sans = Inter({
@@ -7,7 +7,7 @@ const sans = Inter({
   subsets: ["latin"],
 });
 
-const display = Space_Grotesk({
+const display = Source_Serif_4({
   variable: "--font-display",
   subsets: ["latin"],
 });
@@ -19,11 +19,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${sans.variable} ${display.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col bg-[#05070c] text-[#eaf0ff]">{children}</body>
+    <html lang="en" className={`${sans.variable} ${display.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col bg-white text-[#1c1c1a]">{children}</body>
     </html>
   );
 }
